@@ -1,3 +1,4 @@
+
 # 🧠 Entendendo o Q-Learning no Jogo da Velha
 
 Este documento explica a lógica matemática e prática por trás da IA usada neste projeto de Jogo da Velha com Q-Learning.
@@ -14,9 +15,9 @@ Este documento explica a lógica matemática e prática por trás da IA usada ne
 
 A fórmula usada para atualizar os valores Q é:
 
-\\[
-Q(s, a) \\leftarrow Q(s, a) + \\alpha \\left[ r + \\gamma \\max_{a'} Q(s', a') - Q(s, a) \\right]
-\\]
+```
+Q(s, a) ← Q(s, a) + α * [ r + γ * max(Q(s', a')) - Q(s, a) ]
+```
 
 Onde:
 
@@ -57,3 +58,35 @@ O valor de `ε` decai com o tempo:
 ```python
 epsilon *= epsilon_decay  # até atingir epsilon_min
 ```
+
+---
+
+## 📊 Parâmetros do agente
+
+```python
+alpha = 0.1        # aprendizado
+gamma = 0.9        # desconto
+epsilon = 0.9      # exploração inicial
+epsilon_decay = 0.995
+epsilon_min = 0.1
+```
+
+---
+
+## 📚 Vantagens no Jogo da Velha
+
+- Espaço de estados pequeno (~5 mil)
+- IA pode treinar jogando contra si mesma
+- Aprendizado rápido e sem supervisão
+
+---
+
+## ✅ Resultado
+
+Após o treinamento, a IA aprende a jogar de forma competitiva contra humanos ou aleatórios e o modelo é salvo em:
+
+```
+modelos/qlearning_model.pkl
+```
+
+---

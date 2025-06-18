@@ -1,8 +1,3 @@
-Aqui está o conteúdo do `README.md` reestruturado em Markdown — pronto para uso:
-
----
-
-```markdown
 # 🎮 Jogo da Velha com IA (Q-Learning)
 
 Um projeto de **Jogo da Velha** em Python com uma **Inteligência Artificial** baseada em Q-Learning. A IA é capaz de aprender jogando contra si mesma e enfrentar humanos!
@@ -108,10 +103,3 @@ Contribuições são bem-vindas! Abra uma *Issue* ou envie um *Pull Request*.
 Distribuído sob a licença MIT. Veja `LICENSE` para mais detalhes.
 
 ---
-
-```
-
----
-
-Se quiser, posso gerar o arquivo `README.md` final para você baixar direto. Deseja que eu crie o arquivo agora?
-```

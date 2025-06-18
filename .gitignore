@@ -1,0 +1,43 @@
+# Ambiente virtual gerado pelo uv
+.venv/
+
+# Bytecode Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Arquivos de log
+*.log
+
+# Dados de treino/modelo
+modelos/
+*.pkl
+
+# Arquivos temporários
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Arquivos de cache/teste
+.cache/
+*.cover
+coverage.xml
+
+# VSCode
+.vscode/
+
+# PyCharm
+.idea/
+
+# macOS
+.DS_Store
+
+# Linux
+*~
+
+# Jupyter (caso use no futuro)
+.ipynb_checkpoints/
+
+# Arquivos gerados por mim manualmente
+Q-Learning_Explicacao.md

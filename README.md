@@ -1,122 +1,117 @@
-# Estrutura do Projeto Q-Learning - Jogo da Velha
+Aqui está o conteúdo do `README.md` reestruturado em Markdown — pronto para uso:
+
+---
+
+```markdown
+# 🎮 Jogo da Velha com IA (Q-Learning)
+
+Um projeto de **Jogo da Velha** em Python com uma **Inteligência Artificial** baseada em Q-Learning. A IA é capaz de aprender jogando contra si mesma e enfrentar humanos!
+
+---
+
+## 📁 Estrutura do Projeto
 
 ```
-jogo_velha_ai/
-│
-├── main.py                    # Jogo original (seu código atual)
-├── train_agent.py            # Script principal de treinamento
-├── test_agent.py             # Script para testar agente treinado
-├── requirements.txt          # Dependências do projeto
-│
-├── src/
-│   ├── __init__.py
-│   ├── game_engine.py        # Motor do jogo (lógica separada)
-│   ├── q_learning_agent.py   # Implementação do agente Q-Learning
-│   ├── opponents.py          # Diferentes tipos de oponentes
-│   ├── trainer.py           # Gerenciador de treinamento
-│   └── utils.py             # Funções utilitárias
-│
-├── data/
-│   ├── q_tables/            # Q-tables salvas
-│   │   ├── agent_fase1.pkl
-│   │   ├── agent_fase2.pkl
-│   │   └── agent_final.pkl
-│   └── logs/                # Logs de treinamento
-│       ├── training_fase1.log
-│       ├── training_fase2.log
-│       └── training_fase3.log
-│
-├── results/
-│   ├── plots/               # Gráficos de performance
-│   └── metrics/             # Métricas de avaliação
-│
-└── config/
-    └── training_config.yaml # Configurações de treinamento
-```
 
-## Arquivos Principais:
+jogo\_da\_velha\_ia/
+├── main.py                    # Ponto de entrada do jogo
+├── agente/
+│   └── qlearning.py           # Implementação do agente Q-Learning
+├── jogo/
+│   ├── tabuleiro.py           # Exibição e controle visual do tabuleiro
+│   └── motor.py               # Lógica principal do jogo
+├── modelos/
+│   └── qlearning\_model.pkl    # Modelo treinado (gerado após treino)
+├── utils/
+│   └── limpar\_tela.py         # Função para limpar terminal
+└── README.md                  # Este arquivo
 
-### 1. **game_engine.py**
-- Lógica pura do jogo (sem interface)
-- Métodos para verificar vitória, empate, jogadas válidas
-- Representação de estado otimizada
+````
 
-### 2. **q_learning_agent.py**
-- Implementação completa do Q-Learning
-- Métodos para salvar/carregar Q-table
-- Decay do epsilon automático
+---
 
-### 3. **opponents.py**
-- OpponenteAleatorio
-- OpponenteDefensivo  
-- OpponenteAgressivo
-- OpponenteMinimax
-- OpponenteAdaptativo (muda estratégia baseado em fase)
+## 🚀 Como Executar
 
-### 4. **trainer.py**
-- Gerencia as 3 fases de treinamento
-- Coleta métricas de performance
-- Salva checkpoints automáticos
-- Gera logs detalhados
-
-### 5. **train_agent.py**
-- Script principal que orquestra todo o treinamento
-- Configura as fases
-- Chama avaliações periódicas
-
-## Fluxo de Treinamento:
-
-```
-Fase 1 (0-10k)    → Salva checkpoint → Avaliação
-    ↓
-Fase 2 (10k-30k)  → Salva checkpoint → Avaliação  
-    ↓
-Fase 3 (30k-50k)  → Salva modelo final → Avaliação final
-```
-
-## Como Usar:
+1. Clone o repositório:
 
 ```bash
-# Instalar dependências
-pip install -r requirements.txt
+git clone https://github.com/seu-usuario/jogo-da-velha-ia.git
+cd jogo-da-velha-ia
+````
 
-# Treinar agente (processo completo)
-python train_agent.py
+2. Execute o jogo:
 
-# Testar agente treinado
-python test_agent.py
-
-# Jogar contra agente treinado
-python main.py --mode vs_ai
+```bash
+python main.py
 ```
 
-## Configuração YAML:
+---
 
-```yaml
-training:
-  fase1:
-    episodios: 10000
-    epsilon_start: 1.0
-    epsilon_end: 0.3
-    oponente: "aleatorio"
-    
-  fase2:
-    episodios: 20000
-    epsilon_start: 0.3
-    epsilon_end: 0.1
-    oponente: "misto_defensivo"
-    
-  fase3:
-    episodios: 20000
-    epsilon_start: 0.1
-    epsilon_end: 0.01
-    oponente: "misto_avancado"
+## 🕹️ Modos de Jogo Disponíveis
 
-agent:
-  learning_rate: 0.1
-  discount_factor: 0.95
-  
-logging:
-  save_interval: 1000
-  eval_interval: 5000
+* `1️⃣` Dois jogadores humanos
+* `2️⃣` Humano vs Computador Aleatório
+* `3️⃣` Humano vs IA (Q-Learning)
+* `4️⃣` Modo Assistir: Computador vs IA
+* `5️⃣` Treinar a IA
+
+---
+
+## 🧠 Sobre a Inteligência Artificial
+
+O agente usa **Q-Learning**, um algoritmo de aprendizado por reforço:
+
+* Armazena os estados do jogo e recompensas em uma **Q-table**
+* Aprende por tentativa e erro jogando contra si mesmo
+* Após o treinamento, o modelo é salvo em `modelos/qlearning_model.pkl`
+
+---
+
+## 📦 Requisitos
+
+* Python 3.6 ou superior
+* Nenhuma dependência externa (apenas bibliotecas padrão)
+
+---
+
+## 📸 Exemplo da Interface
+
+```
+╔══════════════════════════════════════════════════════╗
+║                🎮 JOGO DA VELHA COM IA 🤖            ║
+╚══════════════════════════════════════════════════════╝
+
+👤 Humano (X) vs 🤖 IA Treinada (O)
+
+    0   1   2
+  +---+---+---+
+0 |   |   |   |
+  +---+---+---+
+1 |   |   |   |
+  +---+---+---+
+2 |   |   |   |
+  +---+---+---+
+
+📝 Digite: linha coluna (ex: 1 2) ou 'q' para sair
+```
+
+---
+
+## 🧑‍💻 Contribuições
+
+Contribuições são bem-vindas! Abra uma *Issue* ou envie um *Pull Request*.
+
+---
+
+## 📄 Licença
+
+Distribuído sob a licença MIT. Veja `LICENSE` para mais detalhes.
+
+---
+
+```
+
+---
+
+Se quiser, posso gerar o arquivo `README.md` final para você baixar direto. Deseja que eu crie o arquivo agora?
 ```
